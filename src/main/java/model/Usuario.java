@@ -1,11 +1,27 @@
 package model;
 
-public class Usuario {
+import java.io.Serializable;
+import javax.xml.bind.annotation.*;
+
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlRootElement(name = "usuario")
+public class Usuario implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
+	@XmlAttribute(name = "cpf")
 	private String cpf;
+	
+	@XmlElement(name = "nome")
 	private String nome;
+	
+	@XmlElement(name = "sobrenome")
 	private String sobrenome;
+	
+	@XmlElement(name = "login")
 	private String login;
+	  
+	@XmlElement(name = "senha")
 	private String senha;
 	
 	public Usuario(String cpf, String nome, String sobrenome, String login, String senha) {
