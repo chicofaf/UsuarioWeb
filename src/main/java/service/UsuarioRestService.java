@@ -10,18 +10,19 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import controller.ControllerUsuario;
 import model.Usuario;
+
 
 @Path("/usuario")
 public class UsuarioRestService {
-	
+
 	@GET
-	@Path("/listar/{nome}")
+	@Path("/retrieve/{nome}")
 	@Produces("application/json")
-	//@Formatted
-	public Response listar(@PathParam("nome") String nome) {
-		Usuario usuario = new Usuario("08088", nome, "da Silva", "loginsdsd", "1234");
-		return Response.status(200).entity(usuario).build();
+	public Response retrieve(@PathParam("nome") String nome) {
+		Usuario usuario = new Usuario("11111111111", nome, "da Silva", "loginsdsd", "1234");
+		return Response.status(Response.Status.OK).entity(usuario).build();
 	}
 
 	@POST
@@ -29,25 +30,22 @@ public class UsuarioRestService {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response create(Usuario usuario) {
-		//String output = usuario.toString();
-		return Response.status(200).entity(usuario).build();
+		ControllerUsuario.create(usuario);
+		return Response.ok().entity(new ServiceResponse(201,"Usuario Cadastrado")).build();
 	}
-	
-	
+
 	@DELETE
 	@Path("/delete")
 	@Consumes("application/json")
 	public Response delete(Usuario usuario) {
-		//String output = usuario.toString();
-		return Response.status(200).entity(usuario).build();
+		return Response.status(Response.Status.OK).entity(usuario).build();
 	}
-	
+
 	@PUT
 	@Path("/update")
 	@Consumes("application/json")
 	public Response update(Usuario usuario) {
-		//String output = usuario.toString();
-		return Response.status(200).entity(usuario).build();
+		return Response.status(Response.Status.OK).entity(usuario).build();
 	}
 
 }

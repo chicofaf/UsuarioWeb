@@ -9,37 +9,40 @@
 	<url>http://maven.apache.org</url>
 
 	<repositories>
-    <repository>
-      <id>jboss</id>
-      <url>http://repository.jboss.org/maven2</url>
-    </repository>
-  </repositories>
-
+		<repository>
+			<id>jboss</id>
+			<url>http://repository.jboss.org/maven2</url>
+		</repository>
+	</repositories>
+	
 	<dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <!-- core library -->
-    <dependency>
-        <groupId>org.jboss.resteasy</groupId>
-         <artifactId>resteasy-jaxrs</artifactId>
-        <version>2.3.1.GA</version>
-    </dependency>
-    <dependency>
-        <groupId>net.sf.scannotation</groupId>
-        <artifactId>scannotation</artifactId>
-        <version>1.0.2</version>
-    </dependency>
-    <!-- Jettison support -->
-    <dependency>
-        <groupId>org.jboss.resteasy</groupId>
-        <artifactId>resteasy-jettison-provider</artifactId>
-        <version>2.3.1.GA</version>
-    </dependency> 
-  </dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>2.3.1.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.scannotation</groupId>
+			<artifactId>scannotation</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jettison-provider</artifactId>
+			<version>2.3.1.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901-1.jdbc4</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<finalName>UsuarioWeb</finalName>
 	</build>

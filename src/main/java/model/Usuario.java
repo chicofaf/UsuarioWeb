@@ -9,7 +9,7 @@ public class Usuario implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@XmlAttribute(name = "cpf")
+	@XmlElement(name = "cpf")
 	private String cpf;
 	
 	@XmlElement(name = "nome")
