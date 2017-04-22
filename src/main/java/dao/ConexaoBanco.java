@@ -11,7 +11,6 @@ public class ConexaoBanco {
 			Class.forName(driver);
 			String url = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=1";
 			Connection conn = DriverManager.getConnection(url);
-			System.out.println("Conexao estabelecida com sucesso");
 			return conn;
 		} catch (ClassNotFoundException e) {
 			System.out.println("Driver incorreto!");

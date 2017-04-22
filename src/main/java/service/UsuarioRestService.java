@@ -1,5 +1,7 @@
 package service;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -10,7 +12,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import controller.ControllerUsuario;
+import dao.FactoryDao;
 import model.Usuario;
 
 
@@ -18,11 +20,12 @@ import model.Usuario;
 public class UsuarioRestService {
 
 	@GET
-	@Path("/retrieve/{nome}")
+	@Path("/retrieve")
 	@Produces("application/json")
-	public Response retrieve(@PathParam("nome") String nome) {
-		Usuario usuario = new Usuario("11111111111", nome, "da Silva", "loginsdsd", "1234");
-		return Response.status(Response.Status.OK).entity(usuario).build();
+	public ArrayList<Usuario> retrieve() {
+		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+		usuarios = FactoryDao.getUsuariodao().retrieve();
+		return usuarios;
 	}
 
 	@POST
@@ -30,22 +33,25 @@ public class UsuarioRestService {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response create(Usuario usuario) {
-		ControllerUsuario.create(usuario);
+		FactoryDao.getUsuariodao().create(usuario);
 		return Response.ok().entity(new ServiceResponse(201,"Usuario Cadastrado")).build();
 	}
 
 	@DELETE
-	@Path("/delete")
-	@Consumes("application/json")
-	public Response delete(Usuario usuario) {
-		return Response.status(Response.Status.OK).entity(usuario).build();
+	@Path("/delete/{cpf}")
+	@Produces("application/json")
+	public Response delete(@PathParam("cpf") String cpf) {
+		FactoryDao.getUsuariodao().delete(cpf);
+		return Response.ok().entity(new ServiceResponse(200,"Usuario Excluído")).build();
 	}
 
 	@PUT
-	@Path("/update")
+	@Path("/update/{cpf}")
 	@Consumes("application/json")
-	public Response update(Usuario usuario) {
-		return Response.status(Response.Status.OK).entity(usuario).build();
+	@Produces("application/json")
+	public Response update(@PathParam("cpf") String cpf,Usuario usuario) {
+		FactoryDao.getUsuariodao().update(usuario);
+		return Response.ok().entity(new ServiceResponse(200,"Usuario Atualizado")).build();
 	}
 
 }
